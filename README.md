@@ -3,6 +3,27 @@ Sections
 Problem overview
 
 
+We model:
+
+A silicon waveguide fabricated on top of a MEMS cantilever
+
+MEMS deflection causes:
+
+Rigid translation of the waveguide center
+
+(Optional, later) strain-induced index perturbation
+
+Optical propagation is recomputed on the deformed geometry
+
+This exact abstraction is used in:
+
+Tunable photonic MEMS
+
+Phase shifters
+
+Optomechanical sensors
+
+
 Physics models
 
 
@@ -16,3 +37,8 @@ How to run
 
 
 Extensions (ML surrogates, optimization)
+
+
+
+
+
