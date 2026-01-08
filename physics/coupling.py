@@ -64,6 +64,8 @@ class MemsPhotonicSystem:
 
         return {
             "load": load_value,
+            "x_beam": x_beam,
+            "w": w,
             "z_shift": z_shift,
             "neff": neff,
             "field": field,
