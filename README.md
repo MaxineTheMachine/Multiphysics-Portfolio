@@ -3,7 +3,7 @@ Sections
 Problem overview
 
 
-We model:
+# We model:
 
 A silicon waveguide fabricated on top of a MEMS cantilever
 
@@ -24,19 +24,39 @@ Phase shifters
 Optomechanical sensors
 
 
-Physics models
 
+# This single demo shows:
+
+Multiphysics coupling
+
+PDE solvers
+
+Geometry deformation
+
+Optical mode sensitivity
 
 Software architecture
 
-
-Example results
-
-
-How to run
+Physics intuition
 
 
-Extensions (ML surrogates, optimization)
+
+
+
+
+# Physics models
+
+
+# Software architecture
+
+
+# Example results
+
+
+# How to run
+
+
+# Extensions (ML surrogates, optimization)
 
 
 

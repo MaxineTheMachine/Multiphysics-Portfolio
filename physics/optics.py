@@ -49,7 +49,7 @@ class WaveguideModeSolver:
 
         # Use sparse Kronecker products to form 2D Laplacian without densifying
         L = kron(eye(nz, format="csr"), Dx2, format="csr") + kron(Dz2, eye(nx, format="csr"), format="csr")
-
+ 
         # Sanity checks
         n_elems = nx * nz
         n_flat = n.flatten()
