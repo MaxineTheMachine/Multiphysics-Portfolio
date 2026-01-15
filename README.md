@@ -59,6 +59,11 @@ Physics intuition
 # Extensions (ML surrogates, optimization)
 
 
+A Gaussian process surrogate model was trained to replace repeated multiphysics MEMS–photonics simulations, achieving sub-percent prediction error while reducing evaluation time by orders of magnitude.
+
+
+
+
 
 
 
