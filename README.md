@@ -37,6 +37,16 @@ Optical mode sensitivity
 
 Software architecture
 
+digital twin workflow:
+
+Layer	Purpose
+Simulation	    |       Ground truth
+Surrogate	|       Fast approximation
+Active learning	|       Smart sampling
+Bayesian optimization   |	Design targeting
+Physics-informed features	|   Structure & generalization
+
+
 Physics intuition
 
 
