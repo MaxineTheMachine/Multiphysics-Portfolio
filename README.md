@@ -52,6 +52,7 @@ The analytic solution can be compared to a finite difference model, by approxima
 $$ \frac{d^4w}{dx^4} \approx \frac{w_{i-2} - 4 w_{i-1} + 6w_i-4w_{i+1} + w_{i+2}}{\Delta x^4} $$
 
 and solving the linear system 
+
 $$ \mathbf{K w} = \mathbf{f} $$
 
 where K is an operator encoding the dynamics of the displacement state vector w. 
@@ -86,9 +87,9 @@ Lastly, we use Dirichlet boundary conditions with a sufficiently padded domain s
 The coupled physics are computed via the following workflow:
 
 1. MEMS Solver
-2. Beam deflection w(x)
-3. Waveguide center displacement Δz(x)
-4. Updated refractive index profile n(x,z; w)
+2. Beam deflection $w(x)$
+3. Waveguide center displacement $\delta z(x)$
+4. Updated refractive index profile $n(x,z; w)$
 5. Optical mode solver
 
 This implements a simple geometry mapping. We assume:
@@ -158,8 +159,7 @@ Optical Mode Evolution
 ![alt text](figures/Optical_mode_shift.png)
 
 
-
-Goal (State This Clearly)
+These results are to prove the software workflow & basic physical sensibility.
 
 # 5. How to run
 The folder 'simulation' contains three demo files that construct these physical systems, and generates the figures shown in the the 'example results' section of this readme. 
