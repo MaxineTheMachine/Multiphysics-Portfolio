@@ -8,15 +8,17 @@ An interesting solution for microscale scanning projection systems can be found 
 
 This is an interesting multiphysics modeling problem for a few reasons:
 - In order to produce a scanning projector output, we need to optimize the optical output at the waveguide & cantilever tip, and the scan rate produced by vibration
-- the scan rate, determined by the resonant frequency of the cantilever, is influenced by it's designed geometry & material properties.
-- The optical output is depended on the waveguide geometry and refractive properties. the geometry is perturbed by deflection of the MEMS substrate, and the refractive properties are pertubed by induced stress and strain from deflection.. 
+- The scan rate, determined by the resonant frequency of the cantilever, is influenced by it's designed geometry & material properties. 
+- The optical output is depended on the waveguide geometry and refractive properties. the geometry is perturbed by deflection of the MEMS substrate, and the refractive properties are pertubed by induced stress and strain from deflection..
+
+In summary, this system is a great intersection of electrical, mechanical, and optical interactions across different physical scales.
 ## Physics Model workflow:
-We will start with a simple 1-D model, coupling the mems and waveguide physics, and explore surrogate machine learning models. Once validated, we move on to two and three dimensional models, requiring more advanced computational techniques like FEA and FDTD. 
+We will start with a simple 1-D model, coupling the MEMS and waveguide physics, and explore surrogate machine learning models. Once validated, we move on to two and three dimensional models, requiring more advanced computational techniques like FEA and FDTD. 
 
 Our general workflow is:
 1. Compute optical mode physics for a unperturbed waveguide design.
-2. calculate the deflection for a cantilever design given a drive signal. 
-3. recompute the optical propagation on the deformed geometry
+2. Calculate the deflection for a cantilever design given a drive signal. 
+3. Recompute the optical propagation on the deformed geometry
 
 This abstraction is informed by industry applications in Tunable photonic MEMS, Phase shifters and Optomechanical sensors.
 Using the multiphysics framework, we construct a digital twin workflow to train machine learning surrogates. 
@@ -30,6 +32,7 @@ Below we list the machine learning framework and how these relate to the physics
 
 # 2. Physics models
 Currently, we have only implemented 1D simple models, and are still validating the results in this simple regime. 
+### Mechanics
 
 The MEMS mechanics are computed on a Euler–Bernoulli cantilever beam model (classical beam theory) with finite-difference solver. This model is a simplification of the linear theory of elasticity. 
 
@@ -38,6 +41,7 @@ Transverse deflection $w(x)$ is governed by
 $$ EI \frac{d^4w}{dx^4} = q(x)$$
 
 Where E is young's modulus, I is the area-moment of inertia, and q(x) is the distributed load in N/m. We implement the following boundary conditions: 
+
 At fixed end $x = 0$:
 - $w(0) = 0$
 - $w'(0) = 0$
@@ -57,6 +61,7 @@ $$ \mathbf{K w} = \mathbf{f} $$
 
 where K is an operator encoding the dynamics of the displacement state vector w. 
 
+### Optics
 
 For the optical model, we analyze a 1D slab waveguide using the effective index method. The optical physics are computed by solving the Helmholtz equation.
 
@@ -84,7 +89,7 @@ Where
 
 Lastly, we use Dirichlet boundary conditions with a sufficiently padded domain so that the guided modes decay to near zero before reaching the boundary. This approximates the open boundary condition while preserving a Hermitian eigenproblem, which keeps the mode solver fast and numerically stable.
 
-
+### Coupling
 
 The coupled physics are computed via the following workflow:
 
@@ -101,8 +106,8 @@ This implements a simple geometry mapping. We assume:
 $$ z_{wg}(x_0) = z_0 + w(x_0) $$
 This lets us simulate:
 - Static tuning
-- Local curvature effects (later)
-- Phase modulation
+- Local curvature effects (WIP)
+- Phase modulation (WIP)
 
 
 # 3. Software architecture
@@ -124,10 +129,11 @@ We include end-to-end demo scripts to showcase:
 - Software architecture
 - Physics intuition
 
+See section 4 & 5 for details on how to run the demo systems.
 
 # 4. Example results
 The following files run example workflows and generate visualizations to vaildate the flow and physics.
-1. run_mems.py — MEMS Mechanics Visualization:
+### 1. run_mems.py — MEMS Mechanics Visualization:
     - Cantilever deflection shape
     - How deflection scales with load
 
@@ -135,7 +141,7 @@ The following files run example workflows and generate visualizations to vaildat
 
 ![Tip Deflection vs Load](figures/MEMS_Load-Deflection_Curve.png)
 
-2.  run_slab.py — Optical Mode Visualization:
+### 2.  run_slab.py — Optical Mode Visualization:
 
 Refractive Index Profile
 
@@ -146,7 +152,7 @@ Optical Mode Intensity
 ![alt text](figures/Fundamental_TE_Mode_Intensity.png)
 
 
-3. run_coupled.py — MEMS + Optics Visualization:
+### 3. run_coupled.py — MEMS + Optics Visualization:
 
 Deflected Beam with Waveguide Location - shows point at which the waveguide is deflected beyond it's height. 
 ![alt text](figures/Waveguide_Deflection.png)
@@ -164,6 +170,8 @@ Optical Mode Evolution
 These results are to prove the software workflow & basic physical sensibility.
 
 # 5. How to run
+We reccomend creating a virtual environment to experiemnt with the codebase. A requirement.txt is included for ease of setup.
+
 The folder 'simulation' contains three demo files that construct these physical systems, and generates the figures shown in the the 'example results' section of this readme. 
 - run_mems.py
 - run_slab.py
