@@ -58,7 +58,7 @@ $$ \mathbf{K w} = \mathbf{f} $$
 where K is an operator encoding the dynamics of the displacement state vector w. 
 
 
-For the optical model, we analyze a 1D slab waveguide using the effective index method. The optical physics are computed by solving the Helmholtz equation.. 
+For the optical model, we analyze a 1D slab waveguide using the effective index method. The optical physics are computed by solving the Helmholtz equation.
 
 $$ \nabla^2 E + k_0^2n^2(x,z)E = \beta^2 E $$
 where $k_0$ is the wavenumber, $\beta = k_0n_{eff}$ is the propogation constant, and $n(x,z)$ is the refractive index.  We formulate this as a matrix eigenvalue problem using separation of variables:
@@ -67,7 +67,9 @@ $$ \mathcal{H}\psi = \beta^2\psi $$
 
 Where:
 - the operator $\mathcal{H}$ is
+
 $$ \mathcal{H} = \nabla^2_{\perp}+k_0^2n^2(x,y) $$
+
 - The eigenfunction $\psi$ encodes the transverse mode
 - $\beta^2$ is the eigenvalue, encoding the refractive properties of the system.
  
