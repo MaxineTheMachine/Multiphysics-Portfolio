@@ -48,7 +48,7 @@ At fixed end $x = 0$:
 
 At the free end $x=L$
 
-- $ w''(L) = 0$
+- $w''(L) = 0$
 - $w''''(L) = 0$
 
 The analytic solution can be compared to a finite difference model, by approximating the 4th derivative:
