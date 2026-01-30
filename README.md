@@ -128,9 +128,9 @@ The following files run example workflows and generate visualizations to vaildat
     - Cantilever deflection shape
     - How deflection scales with load
 
-![Deflection shape](figures\MEMS_Cantilever_Deflection.png)
+![Deflection shape](figures/MEMS_Cantilever_Deflection.png)
 
-![Tip Deflection vs Load](figures\MEMS_Load-Deflection_Curve.png)
+![Tip Deflection vs Load](figures/MEMS_Load-Deflection_Curve.png)
 
 2.  run_slab.py — Optical Mode Visualization:
 
@@ -140,22 +140,22 @@ Refractive Index Profile
 
 Optical Mode Intensity
 
-![alt text](figures\Fundamental_TE_Mode_Intensity.png)
+![alt text](figures/Fundamental_TE_Mode_Intensity.png)
 
 
 3. run_coupled.py — MEMS + Optics Visualization:
 
 Deflected Beam with Waveguide Location - shows point at which the waveguide is deflected beyond it's height. 
-![alt text](figures\Waveguide_Deflection.png)
+![alt text](figures/Waveguide_Deflection.png)
 
 
 Effective Index vs Load
 
-![alt text](figures\Optomechanical_Tuning.png)
+![alt text](figures/Optomechanical_Tuning.png)
 
 Optical Mode Evolution
 
-![alt text](figures\Optical_mode_shift.png)
+![alt text](figures/Optical_mode_shift.png)
 
 
 
